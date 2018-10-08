@@ -1,0 +1,32 @@
+Your list
+
+<% if @attendances.empty? %>
+  <div>Nothing in your list.</div>
+<% else %>
+  <div><%= @attendances.count %></div>
+<% end %>
+
+Add to your list!
+
+<%= form_for @attendance do |f| %>
+  <%= f.fields_for :production do |production_form| %>
+    <p>
+      <%= production_form.label :title %>
+      <%= production_form.text_field :title %>
+    </p>
+  <% end %>
+
+  <p>
+    <%= f.label :notes %>
+    <%= f.text_area :notes %>
+  </p>
+
+  <p>
+    <%= f.label :date %>
+    <%= f.date_field :date %>
+  </p>
+
+   <p>
+    <%= f.submit 'Add!' %>
+  </p>
+<% end %>

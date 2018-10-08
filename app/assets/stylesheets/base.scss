@@ -1,12 +1,39 @@
 @import url('https://fonts.googleapis.com/css?family=Bungee');
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP');
 
+$base-font-size: 16px;
+$display: 'Bungee';
+$sans-serif: 'Noto Serif JP';
+$line-height: 1.75;
+$color-gray: #aaa;
+
+
 body {
   margin: 2%;
-  font-family: 'Noto Serif JP', sans-serif;
-  line-height: 1.75;
+  font-family: $sans-serif, sans-serif;
+  line-height: $line-height;
 }
 
 h1 {
-  font-family: 'Bungee', sans-serif;
+  font-family: $display, sans-serif;
+}
+
+div {
+  margin: 1.5rem auto;
+}
+
+input[type='text'], 
+input[type='date'],
+textarea {
+  border: 1px solid $color-gray;
+  display: block;
+  font-family: $sans-serif, sans-serif;
+  font-size: $base-font-size;
+  line-height: $line-height;
+  padding: .5rem;
+  width: 50%;
+}
+
+textarea {
+  min-height: 8rem;
 }
