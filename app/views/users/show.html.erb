@@ -3,12 +3,18 @@ Your list
 <% if @attendances.empty? %>
   <div>Nothing in your list.</div>
 <% else %>
-  <div><%= @attendances.count %></div>
+  <div>
+  <% @attendances.each do |attendance| %>
+    <%= attendance.production.title%>
+  <% end %>
+  </div>
 <% end %>
 
 Add to your list!
 
 <%= form_for @attendance do |f| %>
+  <%= f.hidden_field :user_id, value: @attendance.user_id %>
+
   <%= f.fields_for :production do |production_form| %>
     <p>
       <%= production_form.label :title %>
