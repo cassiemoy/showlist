@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_08_040906) do
+ActiveRecord::Schema.define(version: 2018_10_08_044211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attendances", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "production_id"
+    t.datetime "date"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["production_id"], name: "index_attendances_on_production_id"
+    t.index ["user_id"], name: "index_attendances_on_user_id"
+  end
+
+  create_table "productions", force: :cascade do |t|
+    t.bigint "show_id"
+    t.string "title"
+    t.index ["show_id"], name: "index_productions_on_show_id"
+  end
+
+  create_table "productions_venues", force: :cascade do |t|
+  end
+
+  create_table "shows", force: :cascade do |t|
+    t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,6 +56,12 @@ ActiveRecord::Schema.define(version: 2018_10_08_040906) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "venues", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
