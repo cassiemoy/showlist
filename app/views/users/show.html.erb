@@ -1,16 +1,30 @@
-Your list
+<h1>Your list</h1>
 
 <% if @attendances.empty? %>
   <div>Nothing in your list.</div>
 <% else %>
-  <div>
-  <% @attendances.each do |attendance| %>
-    <%= attendance.production.title%>
-  <% end %>
-  </div>
+  <table>
+
+  <thead>
+    <tr>
+      <td>Title</td>
+      <td>Date</td>
+      <td>Notes</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @attendances.each do |attendance| %>
+      <tr>
+        <td><%= attendance.production.title%></td> 
+        <td><%= attendance.date.strftime("%B %d, %Y") %></td>
+        <td><%= attendance.notes %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
 <% end %>
 
-Add to your list!
+<h2>Add to your list!</h2>
 
 <%= form_for @attendance do |f| %>
   <%= f.hidden_field :user_id, value: @attendance.user_id %>

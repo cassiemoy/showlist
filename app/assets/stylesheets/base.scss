@@ -14,8 +14,12 @@ body {
   line-height: $line-height;
 }
 
-h1 {
+h1, h2 {
   font-family: $display, sans-serif;
+}
+
+table {
+  width: 50%;
 }
 
 div {
