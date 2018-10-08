@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :attendances
-has_many :productions, :through => :attendances
+  has_many :productions, through: :attendances
 end
