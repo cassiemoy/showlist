@@ -17,7 +17,7 @@
     <% @attendances.each do |attendance| %>
       <tr>
         <td><%= attendance.production.title%></td> 
-        <td><%= attendance.venue.name %></td> 
+        <td><%= attendance.venue.name if attendance.venue.present? %></td> 
         <td><%= attendance.date.strftime("%B %d, %Y") %></td>
         <td><%= attendance.notes %></td>
       </tr>
