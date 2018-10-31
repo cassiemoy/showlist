@@ -1,0 +1,12 @@
+<%= link_to "Back to your list", user_path(current_user) %>
+<h2>Add a venue!</h2>
+
+<%= form_for @venue do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit 'Add!' %>
+  </p>
+<% end %>

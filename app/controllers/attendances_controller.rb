@@ -1,5 +1,4 @@
 class AttendancesController < ApplicationController
-  
   def create
     attendance = Attendance.new
     attendance.build_production
@@ -14,6 +13,6 @@ class AttendancesController < ApplicationController
 
   def attendance_params
     params.require(:attendance)
-          .permit(:user_id, :date, :notes, production_attributes: [:title])
+          .permit(:user_id, :venue_id, :date, :notes, production_attributes: [:title])
   end
 end

@@ -1,0 +1,8 @@
+<%= link_to "Back to your list", user_path(current_user) %>
+<h2>Venues</h2>
+
+<ul>
+  <% Venue.all.each do |venue| %>
+  <li><%= venue.name %></li>
+  <% end %>
+</ul>

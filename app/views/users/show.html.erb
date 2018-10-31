@@ -8,6 +8,7 @@
   <thead>
     <tr>
       <td>Title</td>
+      <td>Venue</td>
       <td>Date</td>
       <td>Notes</td>
     </tr>
@@ -16,6 +17,7 @@
     <% @attendances.each do |attendance| %>
       <tr>
         <td><%= attendance.production.title%></td> 
+        <td><%= attendance.venue.name %></td> 
         <td><%= attendance.date.strftime("%B %d, %Y") %></td>
         <td><%= attendance.notes %></td>
       </tr>
@@ -34,7 +36,16 @@
       <%= production_form.label :title %>
       <%= production_form.text_field :title %>
     </p>
+
+    
   <% end %>
+
+  <p>
+    <%= f.label :venue %>
+    <%= f.select :venue_id, options_from_collection_for_select(Venue.all, :id, :name) %>
+  </p>
+
+  Don't see the venue? <%= link_to 'Add a venue', new_venue_path %>.
 
   <p>
     <%= f.label :notes %>
