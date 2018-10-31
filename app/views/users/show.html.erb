@@ -1,6 +1,6 @@
 <h1>Your list</h1>
 
-<% if @attendances.empty? %>
+<% if current_user.attendances.empty? %>
   <div>Nothing in your list.</div>
 <% else %>
   <table>
@@ -14,7 +14,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @attendances.each do |attendance| %>
+    <% current_user.attendances.each do |attendance| %>
       <tr>
         <td><%= attendance.production.title%></td> 
         <td><%= attendance.venue.name if attendance.venue.present? %></td> 
